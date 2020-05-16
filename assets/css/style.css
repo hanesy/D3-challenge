@@ -12,8 +12,9 @@ body {
   border: 2px solid gray;
 }
 
-.container {
+.container-fluid {
   padding: 5px;
+  margin: 0px;
 }
 
 .topBanner{
@@ -130,16 +131,6 @@ p{
 
 .chartLabel{
   font-size: 100%;
-}
-
-h1{
-  font-size: 30px;
-  font-weight: bold;
-}
-
-h2 {
-  font-size: 22px;
-  font-weight: bold;
 }
 
 .active {
