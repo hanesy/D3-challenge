@@ -37,7 +37,7 @@ var chartGroup = svg.append("g")
 
 
 // loading data
-d3.csv("assets/data/data.csv").then(function(smokingData, err) {
+d3.csv("https://raw.githubusercontent.com/hanesy/D3-challenge/master/data/data.csv").then(function(smokingData, err) {
     if (err) throw err;
 
 
