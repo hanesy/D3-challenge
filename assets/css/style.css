@@ -112,14 +112,8 @@ p{
 }
 
 #analysis{
-  font-size: 80%;
+  font-size: 90%;
 }
-
-
-
-
-
-
 
 .x-axis {
   font-size: 100%;
@@ -191,13 +185,6 @@ p{
     font-size: 70%;
   }
 
-  h1{
-    font-size: 28px;
-  }
-
-  h2{
-    font-size: 20px;
-  }
 }
 
 @media screen and (max-width: 400px) {
@@ -209,11 +196,4 @@ p{
     font-size: 60%;
   }
 
-  h1{
-    font-size: 26px;
-  }
-
-  h2{
-    font-size: 18px;
-  }
 }
