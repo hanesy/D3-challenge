@@ -4,8 +4,11 @@ var activeYAxis = "healthcare";
 
 
 // set SVG
-var svgWidth = 960;
-var svgHeight = 600;
+var svgWidth = $("#scatter").width();
+var svgHeight = svgWidth*.45;
+
+console.log(  $("#scatter").width());
+// var svgHeight =  $("#timelineChart_rect").height();
 
 var margin = {
   top: 20,

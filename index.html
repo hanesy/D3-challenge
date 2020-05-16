@@ -3,67 +3,136 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>D3 Health Analysis</title>
+
+  <!-- Libs -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/d3Style.css">
-
-</head>
-
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-12">
-        <h1>D3 Health Analysis</h1>
-        <p>Heain Yee - March 2020</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-md-12">
-        <div id="scatter">
-          <!-- We append our chart here. -->
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-md-12">
-        <div class="article">
-          <h2>Correlations Discovered Between Health Risks and Poverty, Age, Income</h2>
-          <hr>
-          <p><strong>Poverty</strong> <br>
-            <ul>
-              <li>States with <strong>higher poverty rates</strong> are <strong style="color: red;"> more likely to have higher obesity rates.</strong></li>
-              <li>States with <strong>higher poverty rates</strong> are <strong style="color: red;"> more likely to have higher percentage of population who smoke.</strong> </li>
-              <li>States with <strong>higher poverty rates</strong> are<strong style="color: red;"> more likely to have percentage of population who lack healthcare.</strong> </li>
-            </ul></p>
-            <p><strong>Age</strong> <br>
-              <ul>
-                <li>States with <strong>higher median age</strong> are <strong style="color: red;"> more likely to have higher obesity rates.</strong> </li>
-                <li>States with <strong>higher median age</strong> are <strong style="color: red;"> more likely to have higher percentage of population who smoke.</strong> </li>
-                <li>States with <strong>higher median age</strong> are <strong style="color: green;"> less likely to have percentage of population who lack healthcare.</strong> </li>
-              </ul></p>
-              <p><strong>Income</strong> <br>
-                <ul>
-                  <li>States with <strong>higher median household income</strong> are <strong style="color: green;"> less likely to have higher obesity rates.</strong> </li>
-                  <li>States with <strong>higher median household income</strong> are <strong style="color: green;"> less likely to have higher percentage of population who smoke.</strong> </li>
-                  <li>States with <strong>higher median household income</strong> are <strong style="color: green;"> less likely to have percentage of population who lack healthcare.</strong> </li>  
-                </ul></p>
-
-                
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer-->
-  <div id="footer">
-    <p>The Coding Boot Camp&copy;2016</p>
-  </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- End libs -->
+
+  <link rel="stylesheet" href="assets/style.css">
+  <title>HY - Health and Demography in US</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="https://hanesy.github.io/">HY</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://hanesy.github.io/">home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://hanesy.github.io/about">about me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://hanesy.github.io/personality">personality</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://hanesy.github.io/resume">resume</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="https://hanesy.github.io/projects"> see all projects </a>
+        </li>
+
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            featured projects
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="https://hanesy.github.io/plotly-challenge/" target="_blank">Biodiversity Dashboard</a>
+            <a class="dropdown-item" href="https://public.tableau.com/profile/heain#!/vizhome/Tableau-Challenge_15863863626670/StoryBoard" target="_blank"> CitiBike Ridership</a>
+            <a class="dropdown-item" href="https://icma.org/articles/doing-data-right" target="_blank"> Doing Data Right</a>
+            <a class="dropdown-item active" href="https://hanesy.github.io/D3-challenge/" target="_blank">Health and Demography in United States</a>
+            <a class="dropdown-item" href="https://hanesy.github.io/leaflet-challenge/" target="_blank"> Mapping Earthquakes</a>
+            <a class="dropdown-item" href="https://olympics-dash.herokuapp.com/" target="_blank"> Olympics Dashboard</a>
+            <a class="dropdown-item" href="https://hanesy.github.io/NBA_Playoffs/" target="_blank"> Predicting NBA Playoffs</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+
+  <div class="container">
+
+    <div class="row topBanner">
+      <div class="col-md-12 text-center" ><h1>Health and Demography in the United States</h1>
+        <article>Heain Yee - March 2020</article>
+        <article><i>Explore relationships between health risks and particular demographics.</i></article>
+      </div>
+    </div>
+    <div class = "row mainBar">
+      <div class = "col-md-12">
+      <h5>Correlations Discovered Between Health Risks and Poverty, Age, Income</h5>
+      </div>
+    </div>
+
+    <div class="row secondBar">
+      <div class="col-md-4 outline" id = "analysis">
+          <p><strong>Poverty</strong> <br>
+            <ul>
+              <li>States with <strong>higher poverty rates</strong> are <strong style="color: red;"> more likely to have higher obesity rates.</strong></li>
+              <li>States with <strong>higher poverty rates</strong> are <strong style="color: red;"> more likely to have higher percentage of population who smoke.</strong> </li>
+              <li>States with <strong>higher poverty rates</strong> are<strong style="color: red;"> more likely to have percentage of population who lack healthcare.</strong> </li>
+            </ul></p>            
+      </div>
+      <div class="col-md-4 outline" id = "analysis">
+        <p><strong>Age</strong> <br>
+          <ul>
+            <li>States with <strong>higher median age</strong> are <strong style="color: red;"> more likely to have higher obesity rates.</strong> </li>
+            <li>States with <strong>higher median age</strong> are <strong style="color: red;"> more likely to have higher percentage of population who smoke.</strong> </li>
+            <li>States with <strong>higher median age</strong> are <strong style="color: green;"> less likely to have percentage of population who lack healthcare.</strong> </li>
+          </ul></p>
+             
+
+                
+      </div>
+      <div class="col-md-4 outline" id = "analysis">
+      <p><strong>Income</strong> <br>
+        <ul>
+          <li>States with <strong>higher median household income</strong> are <strong style="color: green;"> less likely to have higher obesity rates.</strong> </li>
+          <li>States with <strong>higher median household income</strong> are <strong style="color: green;"> less likely to have higher percentage of population who smoke.</strong> </li>
+          <li>States with <strong>higher median household income</strong> are <strong style="color: green;"> less likely to have percentage of population who lack healthcare.</strong> </li>  
+        </ul></p>
+
+                
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div id="scatter">
+        </div>
+      </div>
+    
+    </div>
+
+
+
+  </div>
+
+  <!-- Footer-->
+  <footer id="footer">
+    <div style = "display: inline-block"><a href="https://github.com/hanesy" target="_blank" ><img src="/assets/images/gh.png" height = '40' alt=""><br>Github</a></div>
+    <div style = "display: inline-block"><a href="https://www.linkedin.com/in/heain-yee-82105818/" target="_blank"><img src="/assets/images/li.png" height = '40' alt=""><br>LinkedIn</a></div>
+    <div style = "display: inline-block"><a href="mailto: heainyee@gmail.com" target="_blank"><img src="/assets/images/email.png" height = '40' alt=""><br>Email</a></div>
+  </footer>
+
+
+
   <script type="text/javascript" src="assets/js/app.js"></script>
 
 </body>
